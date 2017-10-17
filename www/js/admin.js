@@ -18,13 +18,23 @@ $(document).ready(function(){
             $("#loading").show();debugger;
             window.location.href = 'RegDevice.html?user=' + btoa($("#hidusrid").val()) + '';
         });
-        $(".box6").click(function(){
-            $("#loading").show();
-            window.location.href = 'StageMapping.html?user=' + btoa($("#hidusrid").val()) + '';
-        });
         $(".box7").click(function(){
             $("#loading").show();
             window.location.href = 'Operations.html?user=' + btoa($("#hidusrid").val()) + '';
+        });
+		$(".box2").click(function(){
+            $("#loading").show();
+			$.ajax({
+             type: "GET",
+             url: "http://202.83.27.199/TestAPI/api/User/GetUserScreens/" + $("#hidusrid").val(),		//Act Link.						
+			 //url: "http://182.72.244.25/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),	//Airtel Link.
+             data: '{}',
+             contentType: "application/json",
+             success: function(result) {
+             window.location.href = result + '?user=' + btoa($("#hidusrid").val())+ '';
+			}
+            });
+            //window.location.href = 'admin_sds.html?user=' + btoa($("#hidusrid").val()) + '';
         });
 });
 
@@ -50,6 +60,10 @@ function qs() {
         }
 }
 
+function getSDS()
+{
+	
+}
 
 //  Internal (SQL Lite) DB Section-----Start--- 
 	
