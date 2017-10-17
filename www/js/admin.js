@@ -22,7 +22,7 @@ $(document).ready(function(){
             $("#loading").show();
             window.location.href = 'Operations.html?user=' + btoa($("#hidusrid").val()) + '';
         });
-		$(".box2").click(function(){
+		$(".box5").click(function(){
             $("#loading").show();
 			$.ajax({
              type: "GET",
@@ -31,7 +31,7 @@ $(document).ready(function(){
              data: '{}',
              contentType: "application/json",
              success: function(result) {
-             window.location.href = result + '?user=' + btoa($("#hidusrid").val())+ '';
+             window.location.href = result + '?user=' + btoa($("#hidusrid").val());
 			}
             });
             //window.location.href = 'admin_sds.html?user=' + btoa($("#hidusrid").val()) + '';
@@ -51,7 +51,7 @@ function qs() {
             }
         }
         if (parms.length > 0) {
-            $("#hidusrid").val(atob(qsParm["user"]));
+            $("#hidusrid").val(btoa(qsParm["user"]));
             return true;
         }
         else {
