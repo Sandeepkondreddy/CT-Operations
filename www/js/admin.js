@@ -51,7 +51,7 @@ function qs() {
             }
         }
         if (parms.length > 0) {
-            $("#hidusrid").val(btoa(qsParm["user"]));
+            $("#hidusrid").val(atob(qsParm["user"]));
             return true;
         }
         else {
