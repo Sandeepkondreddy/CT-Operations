@@ -22,12 +22,12 @@ $(document).ready(function(){
             $("#loading").show();
             window.location.href = 'Operations.html?user=' + btoa($("#hidusrid").val()) + '';
         });
-		$(".box5").click(function(){
+		$(".box6").click(function(){debugger;
             $("#loading").show();
 			$.ajax({
              type: "GET",
-             url: "http://202.83.27.199/TestAPI/api/User/GetUserScreens/" + $("#hidusrid").val(),		//Act Link.						
-			 //url: "http://182.72.244.25/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),	//Airtel Link.
+             //url: "http://202.83.27.199/TestAPI/api/User/GetUserScreens/" + $("#hidusrid").val(),		//Act Link.						
+			 url: "http://182.72.244.25/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),	//Airtel Link.
              data: '{}',
              contentType: "application/json",
              success: function(result) {
@@ -51,7 +51,7 @@ function qs() {
             }
         }
         if (parms.length > 0) {
-            $("#hidusrid").val(atob(qsParm["user"]));
+            $("#hidusrid").val(btoa(qsParm["user"]));
             return true;
         }
         else {
