@@ -25,7 +25,7 @@ $(document).ready(function(){
         });
 		$(".box6").click(function(){debugger;
             $("#loading").show();
-			alert($("#hidusrid").val());
+			//alert($("#hidusrid").val());
 			if(sdsresult!="")
             window.location.href = sdsresult+'?user=' + btoa($("#hidusrid").val()) + '';
         });
