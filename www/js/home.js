@@ -142,6 +142,7 @@ function getSDS( userr, passs)
 									if(result=='admin.html')result='admin_sds.html';// alert(result);
                                     //window.location.href = result + '?user=' + btoa($("#husrid").val());
 									sdsresult=result;
+									
                                 }
                             });
                         } else {
