@@ -34,7 +34,7 @@ function qs() {
 $(document).ready(function () {
     $("#loading").hide();
     qs();
- 
+	showUserRecords();
     $("#home").click(function () {
         $.ajax({
             type: "GET",
@@ -54,7 +54,12 @@ $(document).ready(function () {
 			ValidateDevice();
             
         });
-	
+	$(".box6").click(function(){debugger;
+            $("#loading").show();
+			alert($("#hidusrid").val());
+			if(sdsresult!="")
+            window.location.href = sdsresult+'?user=' + btoa($("#hidusrid").val()) + '';
+        });
     /* $("#btnSubmit").click(function (){
 
             $(this).find("i.fa").attr('class', 'fa fa-spinner fa-spin');
@@ -112,3 +117,98 @@ function ValidateDevice(){
      });
 
 }
+
+
+var sdsresult="";
+function getSDS( userr, passs)
+{debugger;
+	if(user!=""){
+	$.ajax({
+                    type: "GET",
+					//url: "http://202.83.27.199/TestAPI/api/User/ValidateUser/" + $("#txtusername").val().trim() + "/" + $("#txtpassword").val(),	  	//Act Link.                
+					url: "http://182.72.244.25/KPCTSDS/api/Account/ValidateUser/" + userr + "/" + passs,   //Airtel Link.
+                    data: '{}',
+                    contentType: "application/json",
+                    success: function(data) {
+                        if (data[1] == 'True') {
+                            $("#husrid").val(data[0]);
+                            $.ajax({
+                                type: "GET",
+                                //url: "http://202.83.27.199/TestAPI/api/User/GetUserScreens/" + $("#hidusrid").val(),		//Act Link.						
+								url: "http://182.72.244.25/KPCTSDS/api/Account/GetUserScreens/" + $("#husrid").val(),	//Airtel Link.
+                                data: '{}',
+                                contentType: "application/json",
+                                success: function(result) {
+									if(result=='admin.html')result='admin_sds.html';// alert(result);
+                                    //window.location.href = result + '?user=' + btoa($("#husrid").val());
+									sdsresult=result;
+                                }
+                            });
+                        } else {
+                            alert("Invalid User Name or Password");
+                        }
+                    },
+                    error: function() {
+                        alert("Invalid User Name or Password");
+                    }
+                });
+	}
+}
+
+
+//  Internal (SQL Lite) DB Section-----Start--- 
+	
+		// --SQLLite Database Creation
+		var db = openDatabase("LocalDB", "1.0", "Local Database", 200000);  // Open SQLLite Database
+		function initDatabase()  // Function Call When Page is ready.
+		{
+			 try {
+				 if (!window.openDatabase)  // Check browser is supported SQLLite or not.
+				 {
+					 alert('Databases are not supported in this browser.');
+				 }
+				 else {
+					 //createUserTable();  // If supported then call Function for create table in SQLite
+				 }
+			 }
+		 
+			catch (e) {
+				 if (e == 2) {
+					 // Version number mismatch. 
+					 console.log("Invalid database version.");
+				 } else {
+					 console.log("Unknown error " + e + ".");
+				 }
+				 return;
+			 }
+		 }
+var user="";var pass="";		 
+		 // Function For Retrive User data from Database
+		var selectRecentUserStatement = " SELECT * FROM UserTbl where Id=(Select Max(Id) from UserTbl)";
+		var userDataset;
+		function showUserRecords() // Function For Retrive data from Database Display records as list
+		{
+			 db.transaction(function (tx) {
+				 tx.executeSql(selectRecentUserStatement, [], function (tx, result) {
+					 userDataset = result.rows;
+					 if(userDataset.length==0)
+					 {				 
+						 //document.getElementById('lblmessage').innerHTML = 'Offline User Data Not Available.!';
+						 //alert (' Offline User Data Not Available.!');	
+					 }
+					 else{
+						 //document.getElementById('lblmessage').innerHTML = dataset.length+ ' Offline User Data Available.!';
+						// alert (' Offline User Data Available.!');	
+					 }
+					 for (var i = 0, item = null; i < userDataset.length; i++) {
+						item = userDataset.item(i);
+						//alert('Id:'+item['Id']+ ', IMEI:'+item['IMEI']+', LoginId:'+item['LoginId']+', Password:'+item['Password']+', HomePage:'+item['HomePage']+',  CreatedTime:'+item['CreatedTime']);						 
+						 user=item['LoginId'];
+						 pass=item['Password'];
+						 getSDS(item['LoginId'],item['Password']);
+					 }
+					 
+				 });
+			 });
+		 }
+//  Internal (SQL Lite) DB Section-----End--- 
