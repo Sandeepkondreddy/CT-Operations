@@ -56,7 +56,7 @@ function qs() {
 }
 
 var sdsresult="";
-function getSDS(var userr,var passs)
+function getSDS( userr, passs)
 {debugger;
 	if(user!=""){
 	$.ajax({
