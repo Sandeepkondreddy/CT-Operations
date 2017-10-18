@@ -76,7 +76,8 @@ function getSDS( userr, passs)
                                 contentType: "application/json",
                                 success: function(result) {
 									if(result=='admin.html')result='admin_sds.html'; alert(result);
-                                    window.location.href = result + '?user=' + btoa($("#husrid").val());
+                                    //window.location.href = result + '?user=' + btoa($("#husrid").val());
+									sdsresult=result;
                                 }
                             });
                         } else {
