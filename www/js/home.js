@@ -59,7 +59,11 @@ $(document).ready(function () {
 			//alert($("#hidusrid").val());
 			//alert(sdsresult);
 			if(sdsresult!="")
-            window.location.href = sdsresult+'?user=' + btoa($("#hidusrid").val()) + '';
+            //window.location.href = sdsresult+'?user=' + btoa($("#hidusrid").val()) + '';
+		 window.location.href=sdsresult;
+		else{
+			alert(sdsresult);
+		}
         });
     /* $("#btnSubmit").click(function (){
 
@@ -131,7 +135,7 @@ function getSDS( userr, passs)
                     data: '{}',
                     contentType: "application/json",
                     success: function(data) {
-                        if (data[1] == 'True') {
+                        if (data[1] == 'True') {debugger;
                             $("#husrid").val(data[0]);
                             $.ajax({
                                 type: "GET",
@@ -142,7 +146,7 @@ function getSDS( userr, passs)
                                 success: function(result) {
 									if(result=='admin.html')result='admin_sds.html';// alert(result);
                                     //window.location.href = result + '?user=' + btoa($("#husrid").val());
-									sdsresult=result;
+									sdsresult=result+'?user=' + $("#husrid").val();
 									
                                 }
                             });
@@ -202,7 +206,7 @@ var user="";var pass="";
 						 //document.getElementById('lblmessage').innerHTML = dataset.length+ ' Offline User Data Available.!';
 						// alert (' Offline User Data Available.!');	
 					 }
-					 for (var i = 0, item = null; i < userDataset.length; i++) {
+					 for (var i = 0, item = null; i < userDataset.length; i++) {debugger;
 						item = userDataset.item(i);
 						//alert('Id:'+item['Id']+ ', IMEI:'+item['IMEI']+', LoginId:'+item['LoginId']+', Password:'+item['Password']+', HomePage:'+item['HomePage']+',  CreatedTime:'+item['CreatedTime']);						 
 						 user=item['LoginId'];
