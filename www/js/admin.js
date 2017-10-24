@@ -13,6 +13,7 @@ function onBackKeyDown() {
 
 $(document).ready(function(){
         qs();
+		alert(btoa($("#hidusrid").val()));
 		showUserRecords();
         $("#loading").hide();
         $(".box5").click(function(){
@@ -45,7 +46,7 @@ function qs() {
             }
         }
         if (parms.length > 0) {
-            $("#hidusrid").val(btoa(qsParm["user"]));
+            $("#hidusrid").val(atob(qsParm["user"]));
             return true;
         }
         else {
@@ -57,7 +58,7 @@ function qs() {
 
 var sdsresult="";
 function getSDS( userr, passs)
-{debugger;
+{
 	if(user!=""){
 	$.ajax({
                     type: "GET",
@@ -70,7 +71,7 @@ function getSDS( userr, passs)
                             $("#husrid").val(data[0]);
                             $.ajax({
                                 type: "GET",
-                                //url: "http://202.83.27.199/TestAPI/api/User/GetUserScreens/" + $("#hidusrid").val(),		//Act Link.						
+                                //url: "http://202.83.27.199/TestAPI/api/User/GetUserScreens/" + $("#hidusrid").val(),	//Act Link.						
 								url: "http://182.72.244.25/KPCTSDS/api/Account/GetUserScreens/" + $("#husrid").val(),	//Airtel Link.
                                 data: '{}',
                                 contentType: "application/json",

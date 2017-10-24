@@ -22,7 +22,7 @@ function qs() {
             qsParm[key] = val;
         }
     }
-    if (parms.length > 0) {
+    if (parms.length > 0) {debugger;
         $("#hidusrid").val(atob(qsParm["user"]));
         return true;
     }
@@ -121,7 +121,7 @@ function ValidateDevice(){
 
 var sdsresult="";
 function getSDS( userr, passs)
-{debugger;
+{
 	if(user!=""){
 	$.ajax({
                     type: "GET",
