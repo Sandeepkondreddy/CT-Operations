@@ -9,8 +9,8 @@ function onDeviceReady() {
 function callback(imei) {
     $("#hidimei").val(imei);
 }
-/* function onBackKeyDown() {
-} */
+function onBackKeyDown() {
+}
 function qs() {
     var query = window.location.search.substring(1);
     var parms = query.split('&');

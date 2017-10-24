@@ -6,8 +6,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     document.addEventListener("backbutton", onBackKeyDown, false);
 }
-/* function onBackKeyDown() {
-} */
+function onBackKeyDown() {
+}
 $(document).ready(function (){
     $("#loading").hide();
     qs();
