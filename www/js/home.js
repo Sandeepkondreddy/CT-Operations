@@ -146,7 +146,7 @@ function getSDS( userr, passs)
                                 success: function(result) {
 									if(result=='admin.html')result='admin_sds.html';// alert(result);
                                     //window.location.href = result + '?user=' + btoa($("#husrid").val());
-									sdsresult=result+'?user=' + $("#husrid").val();
+									sdsresult=result+'?user=' + btoa($("#husrid").val());
 									
                                 }
                             });
