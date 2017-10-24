@@ -13,7 +13,7 @@ function onBackKeyDown() {
 
 $(document).ready(function(){
         qs();
-		alert(btoa($("#hidusrid").val()));
+		//alert(btoa($("#hidusrid").val()));
 		showUserRecords();
         $("#loading").hide();
         $(".box5").click(function(){
