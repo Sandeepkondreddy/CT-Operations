@@ -143,7 +143,7 @@ function GetTagDetails(tagno)
 
 function GetTruckDetails(truckno)
 {
-    var TruckNo = truckno.toUpperCase() == "" ? "" : truckno.toUpperCase();
+    var TruckNo = truckno == "" ? "" : truckno;
 	$("#loading").show();
     if(TruckNo != "")
     {
