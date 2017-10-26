@@ -235,6 +235,7 @@ function clear()
     txtCStage.value="";
 	txtOperation.value="";
 	hidNStageId.value="";
+	$("#lblMsg").text("");
 	//alert(document.getElementById('hidDeviceId').value);
 }
 function qs() {
