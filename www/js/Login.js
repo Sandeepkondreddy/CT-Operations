@@ -253,11 +253,11 @@ var url = "";
                 dataType: "json",
                 data: Adddata,
                 success: function (loctyperesult) {
-                    alert('Device Registered Successfully');
+                    alert('Access Log Saved Successfully');
                 },
                 error: function (xhr, status, error) {
                     $("#btnSubmit").prop('disabled', false);
-                    alert('Error Occurred while Registring device.\n\r' + xhr.responseText);
+                    alert('Error Occurred while Saving Access Log.\n\r' + xhr.responseText);
                 }
             });
 		}
