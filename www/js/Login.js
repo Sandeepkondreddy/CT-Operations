@@ -2,6 +2,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
     document.addEventListener("backbutton", onBackKeyDown, false);
+    $("#hiduuid").val(device.uuid);
     window.plugins.imeiplugin.getImei(callback);
 	//var options = {frequency: 3000, enableHighAccuracy: true};
     //navigator.geolocation.watchPosition(onSuccess, onError, options);		
@@ -51,13 +52,13 @@ var url = "";
                             $("#hidusrid").val(data[0]);
                             $.ajax({
                                 type: "GET",
+                                contentType: "application/json",
 								url: "http://apps.kpcl.com/KPCLOpsAPI/api/User/GetUserScreens/" + $("#hidusrid").val(),
                                 //url: "http://202.83.27.199/TestAPI/api/User/GetUserScreens/" + $("#hidusrid").val(),		//Act Link.						
 								/* url: "http://182.72.244.25/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),	//Airtel Link. */
                                 data: '{}',
-                                contentType: "application/json",
                                 success: function(result) {
-									Home=result;insertUserRecord();showUserRecords();
+									Home=result;insertUserRecord();showUserRecords();SaveAppAccessLog();
                                     window.location.href = result + '?user=' + btoa($("#hidusrid").val());
                                 }
                             });
@@ -236,3 +237,27 @@ var url = "";
 			
 	
 	//  Internal (SQL Lite) DB Section-----End---	User Details
+	function SaveAppAccessLog() // Function For Retrive data from Database Display records as list
+		{
+			var Adddata = {};
+            Adddata.IMEI = '999';
+            Adddata.UUID = 'sss022';
+			//Adddata.IMEI = $("#hidIMEI").val();
+            //Adddata.UUID = $("#hiduuid").val();
+            Adddata.AppAccessType = 'In';
+            Adddata.User = $("#txtusername").val();
+            $.ajax({
+                type: 'POST',
+                url: 'http://apps.kpcl.com/KPCLOpsAPI/api/User/ApplicationAccLog',
+				//url: 'http://localhost:51594/api/User/ApplicationAccLog',
+                dataType: "json",
+                data: Adddata,
+                success: function (loctyperesult) {
+                    alert('Device Registered Successfully');
+                },
+                error: function (xhr, status, error) {
+                    $("#btnSubmit").prop('disabled', false);
+                    alert('Error Occurred while Registring device.\n\r' + xhr.responseText);
+                }
+            });
+		}
