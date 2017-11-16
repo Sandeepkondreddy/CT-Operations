@@ -240,10 +240,10 @@ var url = "";
 	function SaveAppAccessLog() // Function For Retrive data from Database Display records as list
 		{
 			var Adddata = {};
-            Adddata.IMEI = '999';
-            Adddata.UUID = 'sss022';
-			//Adddata.IMEI = $("#hidIMEI").val();
-            //Adddata.UUID = $("#hiduuid").val();
+            //Adddata.IMEI = '999';
+            //Adddata.UUID = 'sss022';
+			Adddata.IMEI = $("#hidIMEI").val();
+            Adddata.UUID = $("#hiduuid").val();
             Adddata.AppAccessType = 'In';
             Adddata.User = $("#txtusername").val();
             $.ajax({
