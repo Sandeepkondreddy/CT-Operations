@@ -32,7 +32,7 @@ var url = "";
                 alert('Enter Password.');
                 $("#txtpassword").focus();
                 return false;
-            } else {
+            } else {//SaveAppAccessLog();
                 $btn.find("i.fa").attr('class', 'fa fa-spinner fa-spin fa-lg');				
                 $btn.find("span").text("Logging in ...");
                 $btn.attr('disabled', true);
@@ -242,6 +242,9 @@ var url = "";
 			var Adddata = {};
             //Adddata.IMEI = '999';
             //Adddata.UUID = 'sss022';
+			alert($("#hidIMEI").val());
+			alert($("#hiduuid").val());
+			alert($("#txtusername").val());
 			Adddata.IMEI = $("#hidIMEI").val();
             Adddata.UUID = $("#hiduuid").val();
             Adddata.AppAccessType = 'In';
