@@ -245,9 +245,9 @@ var url = "";
 			Adddata.IMEI = $("#hidIMEI").val();
             Adddata.UUID = $("#hiduuid").val();
             Adddata.AppAccessType = 'In';
-			alert($("#hidIMEI").val());
-			alert($("#hiduuid").val());
-			alert($("#txtusername").val());
+			//alert($("#hidIMEI").val());
+			//alert($("#hiduuid").val());
+			//alert($("#txtusername").val());
             Adddata.User = $("#txtusername").val();
             $.ajax({
                 type: 'POST',

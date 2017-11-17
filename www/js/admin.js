@@ -3,7 +3,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
     document.addEventListener("backbutton", onBackKeyDown, false);
-    window.plugins.imeiplugin.getImei(callback);	
+    $("#hiduuid").val(device.uuid);
+    window.plugins.imeiplugin.getImei(callback);
 }
 function callback(imei) {
     $("#hidIMEI").val(imei);
@@ -148,3 +149,31 @@ var user="";var pass="";
 			 });
 		 }
 //  Internal (SQL Lite) DB Section-----End--- 
+
+function SaveAppAccessLog() // Function For Application Access Log detials
+		{
+			var Adddata = {};
+            //Adddata.IMEI = '999';
+            //Adddata.UUID = 'sss022';
+			Adddata.IMEI = $("#hidIMEI").val();
+            Adddata.UUID = $("#hiduuid").val();
+            Adddata.AppAccessType = 'In';
+			//alert($("#hidIMEI").val());
+			//alert($("#hiduuid").val());
+			//alert($("#txtusername").val());
+            Adddata.User = $("#txtusername").val();
+            $.ajax({
+                type: 'POST',
+                url: 'http://apps.kpcl.com/KPCLOpsAPI/api/User/ApplicationAccLog',
+				//url: 'http://localhost:51594/api/User/ApplicationAccLog',
+                dataType: "json",
+                data: Adddata,
+                success: function (result) {
+                    //alert('Access Log Saved Successfully');
+                },
+                error: function (xhr, status, error) {
+                    //$("#btnSubmit").prop('disabled', false);
+                    //alert('Error Occurred while Saving Access Log.\n\r' + xhr.responseText);
+                }
+            });
+		}
