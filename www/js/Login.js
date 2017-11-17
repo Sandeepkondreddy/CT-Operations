@@ -32,7 +32,7 @@ var url = "";
                 alert('Enter Password.');
                 $("#txtpassword").focus();
                 return false;
-            } else {SaveAppAccessLog();
+            } else {//SaveAppAccessLog();
                 $btn.find("i.fa").attr('class', 'fa fa-spinner fa-spin fa-lg');				
                 $btn.find("span").text("Logging in ...");
                 $btn.attr('disabled', true);
@@ -58,7 +58,7 @@ var url = "";
 								/* url: "http://182.72.244.25/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),	//Airtel Link. */
                                 data: '{}',
                                 success: function(result) {
-									Home=result;insertUserRecord();showUserRecords();SaveAppAccessLog();
+									Home=result;insertUserRecord();showUserRecords();//SaveAppAccessLog();
                                     window.location.href = result + '?user=' + btoa($("#hidusrid").val());
                                 }
                             });
