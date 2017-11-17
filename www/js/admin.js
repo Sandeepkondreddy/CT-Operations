@@ -32,6 +32,10 @@ $(document).ready(function(){
             window.location.href = sdsresult+'?user=' + btoa($("#hidusrid").val()) + '';
         });
 		
+		$("#Logout").click(function() {
+			SaveAppAccessLog();
+		});
+		
 });
 
 
@@ -157,11 +161,11 @@ function SaveAppAccessLog() // Function For Application Access Log detials
             //Adddata.UUID = 'sss022';
 			Adddata.IMEI = $("#hidIMEI").val();
             Adddata.UUID = $("#hiduuid").val();
-            Adddata.AppAccessType = 'In';
+            Adddata.AppAccessType = 'Out';
 			//alert($("#hidIMEI").val());
 			//alert($("#hiduuid").val());
 			//alert($("#txtusername").val());
-            Adddata.User = $("#txtusername").val();
+            Adddata.User =$("#hidusrid").val() ;
             $.ajax({
                 type: 'POST',
                 url: 'http://apps.kpcl.com/KPCLOpsAPI/api/User/ApplicationAccLog',
