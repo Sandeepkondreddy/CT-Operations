@@ -256,11 +256,11 @@ var url = "";
                 dataType: "json",
                 data: Adddata,
                 success: function (result) {
-                    alert('Access Log Saved Successfully');
+                    //alert('Access Log Saved Successfully');
                 },
                 error: function (xhr, status, error) {
-                    $("#btnSubmit").prop('disabled', false);
-                    alert('Error Occurred while Saving Access Log.\n\r' + xhr.responseText);
+                    //$("#btnSubmit").prop('disabled', false);
+                    //alert('Error Occurred while Saving Access Log.\n\r' + xhr.responseText);
                 }
             });
 		}
