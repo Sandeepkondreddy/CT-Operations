@@ -58,7 +58,7 @@ var url = "";
 								/* url: "http://182.72.244.25/KPCTSDS/api/Account/GetUserScreens/" + $("#hidusrid").val(),	//Airtel Link. */
                                 data: '{}',
                                 success: function(result) {
-									Home=result;insertUserRecord();showUserRecords();
+									Home=result;insertUserRecord();showUserRecords();//SaveAppAccessLog();
                                     window.location.href = result + '?user=' + btoa($("#hidusrid").val());
                                 }
                             });
@@ -210,7 +210,7 @@ var url = "";
 		var selectAllStatement = "SELECT * FROM UserTbl where Id=(Select Max(Id) from UserTbl)";
 		var userDataset;
 		function showUserRecords() // Function For Retrive data from Database Display records as list
-		{debugger;SaveAppAccessLog();
+		{debugger;
 			 db.transaction(function (tx) {
 				 tx.executeSql(selectAllStatement, [], function (tx, result) {
 					 userDataset = result.rows;
@@ -237,17 +237,17 @@ var url = "";
 			
 	
 	//  Internal (SQL Lite) DB Section-----End---	User Details
-	function SaveAppAccessLog() // Function For Application Access Log detials
+	function SaveAppAccessLog() // Function For Retrive data from Database Display records as list
 		{
 			var Adddata = {};
             //Adddata.IMEI = '999';
             //Adddata.UUID = 'sss022';
-			Adddata.IMEI = $("#hidIMEI").val();
-            Adddata.UUID = $("#hiduuid").val();
-            Adddata.AppAccessType = 'In';
 			alert($("#hidIMEI").val());
 			alert($("#hiduuid").val());
 			alert($("#txtusername").val());
+			Adddata.IMEI = $("#hidIMEI").val();
+            Adddata.UUID = $("#hiduuid").val();
+            Adddata.AppAccessType = 'In';
             Adddata.User = $("#txtusername").val();
             $.ajax({
                 type: 'POST',
@@ -258,9 +258,8 @@ var url = "";
                 success: function (result) {
                     alert('Access Log Saved Successfully');
                 },
-                error: function (xhr, status, error) {
-                    $("#btnSubmit").prop('disabled', false);
-                    alert('Error Occurred while Saving Access Log.\n\r' + xhr.responseText);
+                error: function () {                    
+                    alert('Error Occurred while Saving Access Log.');
                 }
             });
 		}
