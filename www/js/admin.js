@@ -34,7 +34,7 @@ function qs() {
 $(document).ready(function(){
 	 $("#loading").hide();
         qs();
-		alert($("#hidusrid").val());
+		//alert($("#hidusrid").val());
 		showUserRecords();
        
         $(".box5").click(function(){
