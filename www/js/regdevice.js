@@ -121,7 +121,7 @@ $(document).ready(function () {
 function ValidateDevice(){
 					$.ajax({
                                 type: "GET",
-								url: "http://apps.kpcl.com/KPCLOpsAPI/api/User/DeviceValidate/" + $("#hidimei").val()+"/"+$("#hiduuid").val(),
+								url: "http://apps.kpcl.com/KPCLOpsAPI/api/User/DeviceValidate/" + $("#txtimei").val()+"/"+$("#txtuuid").val(),
                                 data: '{}',
                                 contentType: "application/json",
                                 success: function(result) {
@@ -151,9 +151,9 @@ function SaveAppAccessLog() // Function For Application Access Log detials
 			Adddata.IMEI = $("#txtimei").val();
             Adddata.UUID = $("#txtuuid").val();
             Adddata.AppAccessType = 'Out';
-			alert($("#txtimei").val());
-			alert($("#txtuuid").val());
-			alert($("#hidusrid").val());
+			//alert($("#txtimei").val());
+			//alert($("#txtuuid").val());
+			//alert($("#hidusrid").val());
             Adddata.User =$("#hidusrid").val();
             $.ajax({
                 type: 'POST',
@@ -162,11 +162,11 @@ function SaveAppAccessLog() // Function For Application Access Log detials
                 dataType: "json",
                 data: Adddata,
                 success: function (result) {
-                    alert('Access Log Saved Successfully');
+                    //alert('Access Log Saved Successfully');
                 },
                 error: function (xhr, status, error) {
                     //$("#btnSubmit").prop('disabled', false);
-                    alert('Error Occurred while Saving Access Log.\n\r' + xhr.responseText);
+                    //alert('Error Occurred while Saving Access Log.\n\r' + xhr.responseText);
                 }
             });
 		}

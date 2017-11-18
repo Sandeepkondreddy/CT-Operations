@@ -35,8 +35,9 @@ $(document).ready(function(){
 	 $("#loading").hide();
         qs();
 		//alert($("#hidusrid").val());
+		
 		showUserRecords();
-       
+       alert($("#hidIMEI").val());
         $(".box5").click(function(){
             $("#loading").show();
             window.location.href = 'RegDevice.html?user=' + btoa($("#hidusrid").val()) + '';
