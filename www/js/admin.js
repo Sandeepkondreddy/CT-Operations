@@ -34,7 +34,7 @@ function qs() {
 $(document).ready(function(){
 	 $("#loading").hide();
         qs();
-		alert(atob($("#hidusrid").val()));
+		alert($("#hidusrid").val());
 		showUserRecords();
        
         $(".box5").click(function(){
@@ -184,7 +184,7 @@ function SaveAppAccessLog() // Function For Application Access Log detials
             Adddata.AppAccessType = 'Out';
 			alert($("#hidIMEI").val());
 			alert($("#hiduuid").val());
-			alert($("#hiduuid").val());
+			alert($("#hidusrid").val());
             Adddata.User =$("#hidusrid").val();
             $.ajax({
                 type: 'POST',
