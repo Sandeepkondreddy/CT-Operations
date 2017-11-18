@@ -37,7 +37,7 @@ $(document).ready(function(){
 		//alert($("#hidusrid").val());
 		
 		showUserRecords();
-       alert($("#hidIMEI").val());
+       //alert($("#hidIMEI").val());
         $(".box5").click(function(){
             $("#loading").show();
             window.location.href = 'RegDevice.html?user=' + btoa($("#hidusrid").val()) + '';
@@ -184,9 +184,9 @@ function SaveAppAccessLog() // Function For Application Access Log detials
 			Adddata.IMEI = $("#hidIMEI").val();
             Adddata.UUID = $("#hiduuid").val();
             Adddata.AppAccessType = 'Out';
-			alert($("#hidIMEI").val());
-			alert($("#hiduuid").val());
-			alert($("#hidusrid").val());
+			//alert($("#hidIMEI").val());
+			//alert($("#hiduuid").val());
+			//alert($("#hidusrid").val());
             Adddata.User =$("#hidusrid").val();
             $.ajax({
                 type: 'POST',

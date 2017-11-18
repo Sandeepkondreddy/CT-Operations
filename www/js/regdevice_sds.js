@@ -151,8 +151,8 @@ function SaveAppAccessLog() // Function For Application Access Log detials
 			Adddata.IMEI = $("#txtimei").val();
             Adddata.UUID = $("#txtuuid").val();
             Adddata.AppAccessType = 'Out';
-			//alert($("#txtimei").val());
-			//alert($("#txtuuid").val());
+			alert($("#txtimei").val());
+			alert($("#txtuuid").val());
 			//alert($("#hidusrid").val());
             Adddata.User =$("#hidusrid").val();
             $.ajax({
