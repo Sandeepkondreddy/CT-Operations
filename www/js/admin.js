@@ -1,4 +1,4 @@
-var qsParm = new Array();
+
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
@@ -38,7 +38,7 @@ $(document).ready(function(){
 		
 });
 
-
+var qsParm = new Array();
 function qs() {
         var query = window.location.search.substring(1);
         var parms = query.split('&');
