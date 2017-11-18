@@ -218,3 +218,31 @@ var user="";var pass="";
 			 });
 		 }
 //  Internal (SQL Lite) DB Section-----End--- 
+
+function SaveAppAccessLog() // Function For Application Access Log detials
+		{
+			var Adddata = {};
+            //Adddata.IMEI = '999';
+            //Adddata.UUID = 'sss022';
+			Adddata.IMEI = $("#hidimei").val();
+            Adddata.UUID = $("#hiduuid").val();
+            Adddata.AppAccessType = 'Out';
+			alert($("#hidimei").val());
+			alert($("#hiduuid").val());
+			alert($("#hidusrid").val());
+            Adddata.User =$("#hidusrid").val();
+            $.ajax({
+                type: 'POST',
+                url: 'http://apps.kpcl.com/KPCLOpsAPI/api/User/ApplicationAccLog',
+				//url: 'http://localhost:51594/api/User/ApplicationAccLog',
+                dataType: "json",
+                data: Adddata,
+                success: function (result) {
+                    //alert('Access Log Saved Successfully');
+                },
+                error: function (xhr, status, error) {
+                    //$("#btnSubmit").prop('disabled', false);
+                    //alert('Error Occurred while Saving Access Log.\n\r' + xhr.responseText);
+                }
+            });
+		}
