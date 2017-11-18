@@ -95,6 +95,10 @@ $(document).ready(function () {
         $(this).attr('class', 'btn btn-custom');
         $("#loading").hide();
     }); */
+	
+	$("#Logout").click(function() {
+			SaveAppAccessLog();
+		});
 });
 
 function ValidateDevice(){
@@ -242,7 +246,7 @@ function SaveAppAccessLog() // Function For Application Access Log detials
                 },
                 error: function (xhr, status, error) {
                     //$("#btnSubmit").prop('disabled', false);
-                    alert('Error Occurred while Saving Access Log.\n\r' + xhr.responseText);
+                    //alert('Error Occurred while Saving Access Log.\n\r' + xhr.responseText);
                 }
             });
 		}
