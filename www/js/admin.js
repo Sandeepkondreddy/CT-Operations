@@ -162,9 +162,9 @@ function SaveAppAccessLog() // Function For Application Access Log detials
 			Adddata.IMEI = $("#hidIMEI").val();
             Adddata.UUID = $("#hiduuid").val();
             Adddata.AppAccessType = 'Out';
-			//alert($("#hidIMEI").val());
-			//alert($("#hiduuid").val());
-			//alert($("#txtusername").val());
+			alert($("#hidIMEI").val());
+			alert($("#hiduuid").val());
+			alert($("#hiduuid").val());
             Adddata.User =$("#hidusrid").val();
             $.ajax({
                 type: 'POST',
@@ -173,11 +173,11 @@ function SaveAppAccessLog() // Function For Application Access Log detials
                 dataType: "json",
                 data: Adddata,
                 success: function (result) {
-                    //alert('Access Log Saved Successfully');
+                    alert('Access Log Saved Successfully');
                 },
                 error: function (xhr, status, error) {
                     //$("#btnSubmit").prop('disabled', false);
-                    //alert('Error Occurred while Saving Access Log.\n\r' + xhr.responseText);
+                    alert('Error Occurred while Saving Access Log.\n\r' + xhr.responseText);
                 }
             });
 		}
