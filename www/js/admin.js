@@ -165,7 +165,7 @@ function SaveAppAccessLog() // Function For Application Access Log detials
 			//alert($("#hidIMEI").val());
 			//alert($("#hiduuid").val());
 			//alert($("#txtusername").val());
-            Adddata.User =$("#hidusrid").val() ;
+            Adddata.User =$("#hidusrid").val();
             $.ajax({
                 type: 'POST',
                 url: 'http://apps.kpcl.com/KPCLOpsAPI/api/User/ApplicationAccLog',
