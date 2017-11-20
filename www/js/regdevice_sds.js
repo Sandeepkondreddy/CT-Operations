@@ -34,7 +34,7 @@ function qs() {
 $(document).ready(function () {
     $("#loading").hide();
     qs();
-    //GetDeviceStatus();
+    showUserRecords();
 
     $("#home").click(function () {
         $.ajax({
@@ -143,7 +143,7 @@ function GetDeviceStatus(){
         }
     });
 }
-function SaveAppAccessLog() // Function For Application Access Log detials
+/* function SaveAppAccessLog() // Function For Application Access Log detials
 		{
 			var Adddata = {};
             //Adddata.IMEI = '999';
@@ -154,6 +154,91 @@ function SaveAppAccessLog() // Function For Application Access Log detials
 			alert($("#txtimei").val());
 			alert($("#txtuuid").val());
 			//alert($("#hidusrid").val());
+            Adddata.User =$("#hidusrid").val();
+            $.ajax({
+                type: 'POST',
+                url: 'http://apps.kpcl.com/KPCLOpsAPI/api/User/ApplicationAccLog',
+				//url: 'http://localhost:51594/api/User/ApplicationAccLog',
+                dataType: "json",
+                data: Adddata,
+                success: function (result) {
+                    //alert('Access Log Saved Successfully');
+                },
+                error: function (xhr, status, error) {
+                    //$("#btnSubmit").prop('disabled', false);
+                    //alert('Error Occurred while Saving Access Log.\n\r' + xhr.responseText);
+                }
+            });
+		} */
+		
+//  Internal (SQL Lite) DB Section-----Start--- 
+	
+		// --SQLLite Database Creation
+		var db = openDatabase("LocalDB", "1.0", "Local Database", 200000);  // Open SQLLite Database
+		function initDatabase()  // Function Call When Page is ready.
+		{
+			 try {
+				 if (!window.openDatabase)  // Check browser is supported SQLLite or not.
+				 {
+					 alert('Databases are not supported in this browser.');
+				 }
+				 else {
+					 //createUserTable();  // If supported then call Function for create table in SQLite
+				 }
+			 }
+		 
+			catch (e) {
+				 if (e == 2) {
+					 // Version number mismatch. 
+					 console.log("Invalid database version.");
+				 } else {
+					 console.log("Unknown error " + e + ".");
+				 }
+				 return;
+			 }
+		 }
+var user="";var pass="";		 
+		 // Function For Retrive User data from Database
+		var selectRecentUserStatement = " SELECT * FROM UserTbl where Id=(Select Max(Id) from UserTbl)";
+		var userDataset;
+		function showUserRecords() // Function For Retrive data from Database Display records as list
+		{
+			 db.transaction(function (tx) {
+				 tx.executeSql(selectRecentUserStatement, [], function (tx, result) {
+					 userDataset = result.rows;
+					 if(userDataset.length==0)
+					 {				 
+						 //document.getElementById('lblmessage').innerHTML = 'Offline User Data Not Available.!';
+						 //alert (' Offline User Data Not Available.!');	
+					 }
+					 else{
+						 //document.getElementById('lblmessage').innerHTML = dataset.length+ ' Offline User Data Available.!';
+						// alert (' Offline User Data Available.!');	
+					 }
+					 for (var i = 0, item = null; i < userDataset.length; i++) {debugger;
+						item = userDataset.item(i);
+						//alert('Id:'+item['Id']+ ', IMEI:'+item['IMEI']+', LoginId:'+item['LoginId']+', Password:'+item['Password']+', HomePage:'+item['HomePage']+',  CreatedTime:'+item['CreatedTime']);						 
+						 user=item['LoginId'];
+						 pass=item['Password'];
+						 $("#hidimei").val(item['IMEI']);						 
+					 }
+					 
+				 });
+			 });
+		 }
+//  Internal (SQL Lite) DB Section-----End--- 
+
+function SaveAppAccessLog() // Function For Application Access Log detials
+		{
+			var Adddata = {};
+            //Adddata.IMEI = '999';
+            //Adddata.UUID = 'sss022';
+			Adddata.IMEI = $("#hidimei").val();
+            Adddata.UUID = $("#hiduuid").val();
+            Adddata.AppAccessType = 'Out';
+			alert($("#hidimei").val());
+			alert($("#hiduuid").val());
+			alert($("#hidusrid").val());
             Adddata.User =$("#hidusrid").val();
             $.ajax({
                 type: 'POST',
