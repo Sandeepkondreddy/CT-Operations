@@ -108,7 +108,9 @@ $(document).ready(function () {
     GetDeviceStatus();
     GetTruckDetails($("#txttruckno").val().trim());
     Reason();
-
+	$("#Logout").click(function() {
+			SaveAppAccessLog();
+		});
     $("#home").click(function () {
         $("#loading").show();
         $.ajax({
@@ -272,9 +274,7 @@ $(document).ready(function () {
         }
     });
 	
-	$("#Logout").click(function() {
-			SaveAppAccessLog();
-		});
+	
 });
 
 function GetUserStages(userid)
@@ -663,7 +663,7 @@ var user="";var pass="";
 						 user=item['LoginId'];
 						 pass=item['Password'];
 						 $("#hidimei").val(item['IMEI']);
-						 getSDS(item['LoginId'],item['Password']);
+						 //getSDS(item['LoginId'],item['Password']);
 					 }
 					 
 				 });
