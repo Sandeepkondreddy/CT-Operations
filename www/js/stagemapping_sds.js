@@ -14,7 +14,7 @@ $(document).ready(function (){
     GetUsers();
     GetStages();
     CheckBoxEvents();
-
+	showUserRecords();
     $("#home").click(function () {
         $.ajax({
             type: "GET",
