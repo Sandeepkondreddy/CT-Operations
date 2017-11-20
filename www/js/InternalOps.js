@@ -732,8 +732,8 @@ var user="";var pass="";
 						//alert('Id:'+item['Id']+ ', IMEI:'+item['IMEI']+', LoginId:'+item['LoginId']+', Password:'+item['Password']+', HomePage:'+item['HomePage']+',  CreatedTime:'+item['CreatedTime']);						 
 						 user=item['LoginId'];
 						 pass=item['Password'];
-						 $("#hidimei").val(item['IMEI']);
-						 getSDS(item['LoginId'],item['Password']);
+						 $("#hidIMEI").val(item['IMEI']);
+						 //getSDS(item['LoginId'],item['Password']);
 					 }
 					 
 				 });
