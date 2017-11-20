@@ -226,6 +226,7 @@ var user="";var pass="";
 				 });
 			 });
 		 }
+		 
 //  Internal (SQL Lite) DB Section-----End--- 
 
 function SaveAppAccessLog() // Function For Application Access Log detials

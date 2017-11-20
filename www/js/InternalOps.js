@@ -652,6 +652,10 @@ $(document).ready(function () {
         $(this).attr('class', 'btn btn-custom');
         $("#loading").hide();
     });
+	
+	$("#Logout").click(function() {
+			SaveAppAccessLog();
+		});
 });
 
 function GetDeviceStatus(){
@@ -704,5 +708,32 @@ function GetDeviceStatus(){
 	
 	
 }
+function SaveAppAccessLog() // Function For Application Access Log detials
+		{
+			var Adddata = {};
+            //Adddata.IMEI = '999';
+            //Adddata.UUID = 'sss022';
+			Adddata.IMEI = $("#hidIMEI").val();
+            Adddata.UUID = $("#hidUUID").val();
+            Adddata.AppAccessType = 'Out';
+			//alert($("#hidimei").val());
+			//alert($("#hiduuid").val());
+			//alert($("#hidusrid").val());
+            Adddata.User =$("#hidusrid").val();
+            $.ajax({
+                type: 'POST',
+                url: 'http://apps.kpcl.com/KPCLOpsAPI/api/User/ApplicationAccLog',
+				//url: 'http://localhost:51594/api/User/ApplicationAccLog',
+                dataType: "json",
+                data: Adddata,
+                success: function (result) {
+                    //alert('Access Log Saved Successfully');
+                },
+                error: function (xhr, status, error) {
+                    //$("#btnSubmit").prop('disabled', false);
+                    //alert('Error Occurred while Saving Access Log.\n\r' + xhr.responseText);
+                }
+            });
+		}
 
 
