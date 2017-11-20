@@ -107,10 +107,15 @@ $(document).ready(function () {
     qs();
     GetDeviceStatus();
     GetTruckDetails($("#txttruckno").val().trim());
-    Reason();
+    Reason();showUserRecords();;
+	
 	$("#Logout").click(function() {
+		alert($("#hidimei").val());
+			alert($("#hiduuid").val());
+			alert($("#hidusrid").val());
 			SaveAppAccessLog();
 		});
+		
     $("#home").click(function () {
         $("#loading").show();
         $.ajax({
@@ -637,7 +642,32 @@ function RemarksValidations()
 }
 
 
-
+//  Internal (SQL Lite) DB Section-----Start--- 
+	
+		// --SQLLite Database Creation
+		var db = openDatabase("LocalDB", "1.0", "Local Database", 200000);  // Open SQLLite Database
+		function initDatabase()  // Function Call When Page is ready.
+		{
+			 try {
+				 if (!window.openDatabase)  // Check browser is supported SQLLite or not.
+				 {
+					 alert('Databases are not supported in this browser.');
+				 }
+				 else {
+					 //createUserTable();  // If supported then call Function for create table in SQLite
+				 }
+			 }
+		 
+			catch (e) {
+				 if (e == 2) {
+					 // Version number mismatch. 
+					 console.log("Invalid database version.");
+				 } else {
+					 console.log("Unknown error " + e + ".");
+				 }
+				 return;
+			 }
+		 }
 
 var user="";var pass="";		 
 		 // Function For Retrive User data from Database
@@ -669,12 +699,12 @@ var user="";var pass="";
 				 });
 			 });
 		 }
-
+//  Internal (SQL Lite) DB Section-----End--- 
 
 
 function SaveAppAccessLog() // Function For Application Access Log detials
 		{
-			showUserRecords();
+			
 			var Adddata = {};
             //Adddata.IMEI = '999';
             //Adddata.UUID = 'sss022';

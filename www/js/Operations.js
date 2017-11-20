@@ -36,7 +36,8 @@ function onDeviceReady() {
 
 function callback(imei) {
     $("#hidDeviceId").val(imei);
-	//alert(imei);	
+	//alert(imei);
+	$("#hidimei").val(imei);	
 }
 
 function scanTag()
