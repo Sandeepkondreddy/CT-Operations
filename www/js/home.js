@@ -225,7 +225,7 @@ var user="";var pass="";
 			 });
 		 }
 		 
-		 function showUserRecords1() // Function For Retrive data from Database Display records as list
+		 function showUserRecord1() // Function For Retrive data from Database Display records as list
 		{
 			 db.transaction(function (tx) {
 				 tx.executeSql(selectRecentUserStatement, [], function (tx, result) {
