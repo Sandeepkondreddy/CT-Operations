@@ -110,9 +110,9 @@ $(document).ready(function () {
     Reason();showUserRecords();;
 	
 	$("#Logout").click(function() {
-		alert($("#hidimei").val());
-			alert($("#hiduuid").val());
-			alert($("#hidusrid").val());
+		//alert($("#hidimei").val());
+			//alert($("#hiduuid").val());
+			//alert($("#hidusrid").val());
 			SaveAppAccessLog();
 		});
 		
@@ -711,9 +711,9 @@ function SaveAppAccessLog() // Function For Application Access Log detials
 			Adddata.IMEI = $("#hidimei").val();
             Adddata.UUID = $("#hiduuid").val();
             Adddata.AppAccessType = 'Out';
-			alert($("#hidimei").val());
-			alert($("#hiduuid").val());
-			alert($("#hidusrid").val());
+			//alert($("#hidimei").val());
+			//alert($("#hiduuid").val());
+			//alert($("#hidusrid").val());
             Adddata.User =$("#hidusrid").val();
             $.ajax({
                 type: 'POST',
