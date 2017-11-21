@@ -382,7 +382,7 @@ var user="";var pass="";
 						 user=item['LoginId'];
 						 pass=item['Password'];
 						 $("#hidimei").val(item['IMEI']);
-						 getSDS(item['LoginId'],item['Password']);
+						 //getSDS(item['LoginId'],item['Password']);
 					 }
 					 
 				 });

@@ -34,7 +34,7 @@ function qs() {
 $(document).ready(function () {
     $("#loading").hide();
     qs();//alert(btoa($("#hidusrid").val()));
-	showUserRecords();
+	showUserRecord1();
     $("#home").click(function () {
         $.ajax({
             type: "GET",
@@ -192,6 +192,8 @@ function getSDS( userr, passs)
 				 return;
 			 }
 		 }
+		 
+	 
 var user="";var pass="";		 
 		 // Function For Retrive User data from Database
 		var selectRecentUserStatement = " SELECT * FROM UserTbl where Id=(Select Max(Id) from UserTbl)";
@@ -217,6 +219,34 @@ var user="";var pass="";
 						 pass=item['Password'];
 						 $("#hidimei").val(item['IMEI']);
 						 getSDS(item['LoginId'],item['Password']);
+					 }
+					 
+				 });
+			 });
+		 }
+		 
+		 function showUserRecords1() // Function For Retrive data from Database Display records as list
+		{
+			 db.transaction(function (tx) {
+				 tx.executeSql(selectRecentUserStatement, [], function (tx, result) {
+					 userDataset = result.rows;
+					 if(userDataset.length==0)
+					 {				 
+						 //document.getElementById('lblmessage').innerHTML = 'Offline User Data Not Available.!';
+						 //alert (' Offline User Data Not Available.!');	
+					 }
+					 else{
+						 //document.getElementById('lblmessage').innerHTML = dataset.length+ ' Offline User Data Available.!';
+						// alert (' Offline User Data Available.!');	
+					 }
+					 for (var i = 0, item = null; i < userDataset.length; i++) {debugger;
+						item = userDataset.item(i);
+						//alert('Id:'+item['Id']+ ', IMEI:'+item['IMEI']+', LoginId:'+item['LoginId']+', Password:'+item['Password']+', HomePage:'+item['HomePage']+',  CreatedTime:'+item['CreatedTime']);						 
+						 user=item['LoginId'];
+						 pass=item['Password'];
+						 
+						 $("#hidimei").val(item['IMEI']);
+						 //getSDS(item['LoginId'],item['Password']);
 					 }
 					 
 				 });
