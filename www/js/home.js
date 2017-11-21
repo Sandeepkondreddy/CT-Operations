@@ -34,7 +34,7 @@ function qs() {
 $(document).ready(function () {
     $("#loading").hide();
     qs();//alert(btoa($("#hidusrid").val()));
-	showUserRecord1();
+	showUserRecord1();showUserRecords();
     $("#home").click(function () {
         $.ajax({
             type: "GET",
